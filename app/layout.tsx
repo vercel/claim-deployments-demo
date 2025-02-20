@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "./footer";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen flex flex-col justify-between items-center bg-neutral-50 pt-5">
+          <div className="my-auto w-full max-w-2xl">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
