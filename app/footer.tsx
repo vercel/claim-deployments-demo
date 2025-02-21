@@ -1,0 +1,47 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="py-8">
+      <div className="flex items-center justify-center space-x-6">
+        <Link
+          className="flex items-center hover:text-gray-600 transition-colors"
+          href="https://github.com/vercel/claim-deployments-demo"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub Repository"
+        >
+          <Image
+            alt="GitHub Repository"
+            src="/icons/github.svg"
+            width={20}
+            height={20}
+            className="flex-shrink-0"
+          />
+          <span className="ml-2">GitHub Repository</span>
+        </Link>
+        <div className="h-6 w-px bg-gray-300" />
+        <Link
+          className="flex items-center hover:text-gray-600 transition-colors"
+          href="https://vercel.com/docs/deployments/claim-deployments"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Documentation"
+        >
+          <Image
+            alt="Documentation"
+            src="/icons/document.svg"
+            width={20}
+            height={20}
+            className="flex-shrink-0"
+          />
+          <span className="ml-2">Documentation</span>
+        </Link>
+      </div>
+      <div className="mt-6 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Vercel, Inc. All rights reserved.
+      </div>
+    </footer>
+  );
+}

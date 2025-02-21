@@ -161,143 +161,140 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-50">
-      <div className="w-full max-w-2xl bg-white rounded-xl shadow-md overflow-hidden border border-neutral-200 p-8">
-        <h2 className="text-2xl font-semibold text-neutral-800">
-          Deploy to Vercel
-        </h2>
-        <p className="text-sm text-neutral-500 mt-2">
-          Choose a template or upload your own project.
-        </p>
-        <div className="mt-6">
-          <div className="w-full">
-            <div className="flex rounded-md p-1 border border-neutral-200">
-              <button
-                type="button"
-                onClick={() => setActiveTab("template")}
-                className={`flex-1 text-sm py-2 ${
-                  activeTab === "template"
-                    ? "bg-neutral-100 text-neutral-900 font-medium"
-                    : "text-neutral-600"
-                }`}
-              >
-                Choose Template
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab("upload")}
-                className={`flex-1 text-sm py-2 ${
-                  activeTab === "upload"
-                    ? "bg-neutral-100 text-neutral-900 font-medium"
-                    : "text-neutral-600"
-                }`}
-              >
-                Upload File
-              </button>
-            </div>
-            <div className="mt-6">
-              {activeTab === "template" && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {templates.map((template) => (
-                    <div
-                      key={template.id}
-                      className={`cursor-pointer transition-all p-6 rounded-lg border ${
-                        selectedTemplate === template.id
-                          ? "bg-neutral-100 border"
-                          : "hover:border-neutral-300"
-                      }`}
-                      onClick={() => {
-                        setSelectedTemplate(template.id);
-                        setFile(null);
-                      }}
-                    >
-                      <div className="flex flex-col items-center justify-center">
-                        {template.icon}
-                        <h3 className="font-medium text-sm text-neutral-900 mt-2">
-                          {template.name}
-                        </h3>
-                      </div>
+    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-neutral-200 p-8">
+      <h2 className="text-2xl font-semibold text-neutral-800">
+        Deploy to Vercel
+      </h2>
+      <p className="text-sm text-neutral-500 mt-2">
+        Choose a template or upload your own project.
+      </p>
+      <div className="mt-6">
+        <div className="w-full">
+          <div className="flex rounded-md p-1 border border-neutral-200">
+            <button
+              type="button"
+              onClick={() => setActiveTab("template")}
+              className={`flex-1 text-sm py-2 ${
+                activeTab === "template"
+                  ? "bg-neutral-100 text-neutral-900 font-medium"
+                  : "text-neutral-600"
+              }`}
+            >
+              Choose Template
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("upload")}
+              className={`flex-1 text-sm py-2 ${
+                activeTab === "upload"
+                  ? "bg-neutral-100 text-neutral-900 font-medium"
+                  : "text-neutral-600"
+              }`}
+            >
+              Upload File
+            </button>
+          </div>
+          <div className="mt-6">
+            {activeTab === "template" && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {templates.map((template) => (
+                  <div
+                    key={template.id}
+                    className={`cursor-pointer transition-all p-6 rounded-lg border ${
+                      selectedTemplate === template.id
+                        ? "bg-neutral-100 border"
+                        : "hover:border-neutral-300"
+                    }`}
+                    onClick={() => {
+                      setSelectedTemplate(template.id);
+                      setFile(null);
+                    }}
+                  >
+                    <div className="flex flex-col items-center justify-center">
+                      {template.icon}
+                      <h3 className="font-medium text-sm text-neutral-900 mt-2">
+                        {template.name}
+                      </h3>
                     </div>
-                  ))}
-                </div>
-              )}
-              {activeTab === "upload" && (
-                <div
-                  {...getRootProps()}
-                  className={`border-2 border-dashed rounded-lg p-7 text-center cursor-pointer transition-colors ${
-                    isDragActive
-                      ? "border-black bg-gray-50"
-                      : "border-gray-300 hover:border-gray-400"
-                  }`}
-                >
-                  <input {...getInputProps()} />
-                  <Image
-                    alt="Upload"
-                    src="/icons/upload.svg"
-                    className="mx-auto mb-2"
-                    width={24}
-                    height={24}
-                  />
-                  <p className="text-sm text-gray-500">
-                    Drag & drop a .tgz file here, or click to select
-                  </p>
-                  {file && (
-                    <p className="mt-2 text-sm font-medium text-gray-800">
-                      Selected file: {file.name}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {error && (
-              <div className="flex items-center bg-red-100 rounded-md p-2 mt-6 text-sm text-red-600">
-                <Image
-                  src="/icons/error.svg"
-                  alt="Error icon"
-                  width={16}
-                  height={16}
-                  className="mr-2"
-                />
-                {error}
+                  </div>
+                ))}
               </div>
             )}
-
-            <div className="mt-6">
-              <button
-                type="submit"
-                disabled={deploying || (!file && !selectedTemplate)}
-                className={`w-full py-2 px-4 rounded-md font-medium text-sm ${
-                  deploying || (!file && !selectedTemplate)
-                    ? "bg-neutral-100 text-gray-400  cursor-not-allowed border"
-                    : "bg-black hover:bg-gray-800 text-white"
+            {activeTab === "upload" && (
+              <div
+                {...getRootProps()}
+                className={`border-2 border-dashed rounded-lg p-7 text-center cursor-pointer transition-colors ${
+                  isDragActive
+                    ? "border-black bg-gray-50"
+                    : "border-gray-300 hover:border-gray-400"
                 }`}
-                onClick={handleDeploy}
               >
-                {deploying ? (
-                  <>
-                    {" "}
-                    <LoadingSpinner text="Deploying..." />
-                  </>
-                ) : (
-                  "Deploy"
-                )}
-              </button>
-            </div>
-
-            {deploying && (
-              <>
-                <ProgressBar
-                  totalTimeInSeconds={
-                    templates.find(
-                      (template) => template.id === selectedTemplate
-                    )?.averageDeployTimeInSeconds || 60
-                  }
+                <input {...getInputProps()} />
+                <Image
+                  alt="Upload"
+                  src="/icons/upload.svg"
+                  className="mx-auto mb-2"
+                  width={24}
+                  height={24}
                 />
-                <BuildLogs deployment={deployment} />
-              </>
+                <p className="text-sm text-gray-500">
+                  Drag & drop a .tgz file here, or click to select
+                </p>
+                {file && (
+                  <p className="mt-2 text-sm font-medium text-gray-800">
+                    Selected file: {file.name}
+                  </p>
+                )}
+              </div>
             )}
           </div>
+
+          {error && (
+            <div className="flex items-center bg-red-100 rounded-md p-2 mt-6 text-sm text-red-600">
+              <Image
+                src="/icons/error.svg"
+                alt="Error icon"
+                width={16}
+                height={16}
+                className="mr-2"
+              />
+              {error}
+            </div>
+          )}
+
+          <div className="mt-6">
+            <button
+              type="submit"
+              disabled={deploying || (!file && !selectedTemplate)}
+              className={`w-full py-2 px-4 rounded-md font-medium text-sm ${
+                deploying || (!file && !selectedTemplate)
+                  ? "bg-neutral-100 text-gray-400  cursor-not-allowed border"
+                  : "bg-black hover:bg-gray-800 text-white"
+              }`}
+              onClick={handleDeploy}
+            >
+              {deploying ? (
+                <>
+                  {" "}
+                  <LoadingSpinner text="Deploying..." />
+                </>
+              ) : (
+                "Deploy"
+              )}
+            </button>
+          </div>
+
+          {deploying && (
+            <>
+              <ProgressBar
+                totalTimeInSeconds={
+                  templates.find((template) => template.id === selectedTemplate)
+                    ?.averageDeployTimeInSeconds || 60
+                }
+              />
+              <BuildLogs deployment={deployment} />
+            </>
+          )}
         </div>
       </div>
     </div>
