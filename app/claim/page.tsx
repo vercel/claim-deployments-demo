@@ -41,10 +41,10 @@ export default function ClaimPage() {
 
         <button
           type="button"
-          className="w-full flex items-center justify-between p-4 rounded-lg transition-colors duration-200 border bg-white border-gray-200 text-sm text-gray-700 hover:bg-gray-100"
+          className="w-full flex items-center gap-2 p-4 rounded-lg transition-colors duration-200 border bg-white border-gray-200 text-sm text-gray-700 hover:bg-gray-100"
           onClick={() => window.open(previewUrl, "_blank")}
         >
-          {previewUrl}
+          <span className="flex-1 text-left break-all">{previewUrl}</span>
           <Image
             alt="External link"
             src="icons/external-link.svg"
@@ -64,7 +64,7 @@ export default function ClaimPage() {
           {" "}
           <button
             type="button"
-            className="mt-6 w-full h-10 flex items-center justify-center p-2 rounded-lg transition-colors duration-200 border bg-black text-white text-sm focus:ring-black hover:bg-gray-700"
+            className="mt-6 w-full h-10 flex items-center justify-center p-2 rounded-lg transition-colors duration-200 border bg-black text-white text-sm hover:opacity-80 focus:outline-none focus:ring-0"
           >
             <svg
               width={17}
@@ -74,6 +74,7 @@ export default function ClaimPage() {
               xmlns="http://www.w3.org/2000/svg"
               className="mr-2"
             >
+              <title>Claim Deployment Icon</title>
               <path d="M12 2L22 22H2L12 2Z" fill="white" />
             </svg>
             Claim Deployment
