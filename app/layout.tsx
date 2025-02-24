@@ -22,7 +22,7 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
     >
       <body>
-        <div className="font-geist-sans min-h-screen flex flex-col justify-between items-center bg-neutral-50 pt-5">
+        <div className="min-h-screen flex flex-col justify-between items-center bg-neutral-50 pt-5">
           <div className="my-auto w-full max-w-2xl">{children}</div>
           <Footer />
         </div>
