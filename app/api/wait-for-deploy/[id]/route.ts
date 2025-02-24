@@ -24,9 +24,9 @@ async function checkDeploymentStatus(url: string) {
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id: deploymentId } = params;
+  const { id: deploymentId } = await params;
 
   try {
     const maxWaitTime = 4 * 60000; // 4 minutes
