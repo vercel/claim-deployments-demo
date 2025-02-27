@@ -1,14 +1,12 @@
-"use client";
+import ClaimDeploymentButton from "./claim-deployment-button";
+import PreviewUrlIcon from "./preview-url-icon";
 
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-
-export default function ClaimPage() {
-  const searchParams = useSearchParams();
-
-  const code = searchParams.get("code");
-  const previewUrl = searchParams.get("previewUrl");
+export default async function ClaimPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ code: string; previewUrl: string }>;
+}) {
+  const { code, previewUrl } = await searchParams;
 
   if (!code || !previewUrl) {
     return (
@@ -38,48 +36,12 @@ export default function ClaimPage() {
             Preview your site and claim it to your account
           </p>
         </div>
-
-        <button
-          type="button"
-          className="w-full flex items-center gap-2 p-4 rounded-lg transition-colors duration-200 border bg-white border-gray-200 text-sm text-gray-700 hover:bg-gray-100"
-          onClick={() => window.open(previewUrl, "_blank")}
-        >
-          <span className="flex-1 text-left break-all">{previewUrl}</span>
-          <Image
-            alt="External link"
-            src="icons/external-link.svg"
-            width={16}
-            height={16}
-          />
-        </button>
-
+        <PreviewUrlIcon previewUrl={previewUrl} />
         <p className="text-sm text-neutral-700">
           By claiming this deployment, you&apos;ll be able to manage it from
           your own account and make future updates.
         </p>
-
-        <Link
-          href={`https://vercel.com/claim-deployment?code=${code}&returnUrl=${window.location.origin}`}
-        >
-          {" "}
-          <button
-            type="button"
-            className="mt-6 w-full h-10 flex items-center justify-center p-2 rounded-lg transition-colors duration-200 border bg-black text-white text-sm hover:opacity-80 focus:outline-none focus:ring-0"
-          >
-            <svg
-              width={17}
-              height={17}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="mr-2"
-            >
-              <title>Claim Deployment Icon</title>
-              <path d="M12 2L22 22H2L12 2Z" fill="white" />
-            </svg>
-            Claim Deployment
-          </button>
-        </Link>
+        <ClaimDeploymentButton code={code} />
       </div>
     </div>
   );

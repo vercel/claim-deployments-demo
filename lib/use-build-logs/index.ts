@@ -237,11 +237,11 @@ export function useBuildLogs(deployment: T.Deployment | null): {
 } {
   const [logs, setLogs] = useState<T.Log[]>([]);
   const [loading, setLoading] = useState(true);
-  const createdAtRef = useRef<number>();
+  const createdAtRef = useRef<number | undefined>(undefined);
   // We use a ref here as state causes functions to be recreated.
   const logsRef = useRef<T.Log[]>([]);
-  const abortControllerRef = useRef<AbortController>();
-  const deploymentRef = useRef<T.Deployment | null>();
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const deploymentRef = useRef<T.Deployment | null>(null);
   deploymentRef.current = deployment;
 
   const createdAt = deployment?.createdAt;
