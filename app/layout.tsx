@@ -4,8 +4,6 @@ import Footer from "./footer";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Claim Deployments Demo",
   description: "Claiming deployments using Project transfer flow",
