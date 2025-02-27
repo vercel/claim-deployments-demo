@@ -161,7 +161,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-neutral-200 p-8">
+    <>
       <h2 className="text-2xl font-semibold text-neutral-800">
         Deploy to Vercel
       </h2>
@@ -297,6 +297,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
