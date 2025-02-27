@@ -269,7 +269,7 @@ export default function Home() {
               className={`w-full py-2 px-4 rounded-md font-medium text-sm ${
                 deploying || (!file && !selectedTemplate)
                   ? "bg-neutral-100 text-gray-400  cursor-not-allowed border"
-                  : "bg-black hover:bg-gray-800 text-white"
+                  : "bg-black hover:opacity-80 text-white"
               }`}
               onClick={handleDeploy}
             >
