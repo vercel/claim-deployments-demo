@@ -2,13 +2,14 @@
 
 import puppeteer from "puppeteer-core";
 import chromium from "@sparticuz/chromium";
+import * as chromeLauncher from "chrome-launcher";
 
 export async function generatePreview(url: string) {
   try {
+    const chromePath = await getChromePath();
+
     const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
+      executablePath: chromePath,
       headless: true,
     });
 
@@ -42,4 +43,12 @@ export async function generatePreview(url: string) {
       error: "Failed to generate preview.",
     };
   }
+}
+
+async function getChromePath() {
+  if (process.env.NODE_ENV === "development") {
+    return chromeLauncher.Launcher.getFirstInstallation();
+  }
+
+  return chromium.executablePath();
 }
