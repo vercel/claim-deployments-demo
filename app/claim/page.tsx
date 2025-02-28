@@ -29,14 +29,11 @@ export default async function ClaimPage({
   }
 
   return (
-    <div className="flex flex-col flex-grow space-y-6 min-h-[412px]">
+    <div className="flex flex-col flex-grow space-y-6">
       <div className="space-y-2">
         <h2 className="text-2xl font-semibold text-neutral-800">
           Your Deployment is Ready
         </h2>
-        <p className="text-sm text-neutral-500 mt-2">
-          Preview your site and claim it to your account
-        </p>
       </div>
       <PreviewUrlIcon previewUrl={previewUrl} />
       <Suspense fallback={<WebsitePreviewSkeleton />}>

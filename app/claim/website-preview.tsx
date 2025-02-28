@@ -6,7 +6,7 @@ export default async function WebsitePreview({ url }: { url: string }) {
 
   if (result.error) {
     return (
-      <div className="h-[123px] flex items-center justify-center bg-gray-100 rounded-lg p-6">
+      <div className="h-[200px] flex items-center justify-center bg-gray-100 rounded-lg p-6">
         <p className="text-sm text-gray-600">{result.error}</p>
       </div>
     );
@@ -18,7 +18,7 @@ export default async function WebsitePreview({ url }: { url: string }) {
       alt="Website preview"
       width={1280}
       height={720}
-      className="h-[123px] object-cover rounded-lg border"
+      className="h-[200px] object-cover rounded-lg border"
     />
   );
 }
