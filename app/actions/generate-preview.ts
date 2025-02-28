@@ -6,12 +6,9 @@ import * as chromeLauncher from "chrome-launcher";
 
 export async function generatePreview(url: string) {
   try {
-    const chromePath = await getChromePath();
+    const options = await getPuppeteerOptions();
 
-    const browser = await puppeteer.launch({
-      executablePath: chromePath,
-      headless: true,
-    });
+    const browser = await puppeteer.launch(options);
 
     const page = await browser.newPage();
 
@@ -45,10 +42,15 @@ export async function generatePreview(url: string) {
   }
 }
 
-async function getChromePath() {
+async function getPuppeteerOptions() {
   if (process.env.NODE_ENV === "development") {
-    return chromeLauncher.Launcher.getFirstInstallation();
+    return {
+      executablePath: chromeLauncher.Launcher.getFirstInstallation(),
+    };
   }
 
-  return chromium.executablePath();
+  return {
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+  };
 }
