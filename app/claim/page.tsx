@@ -1,5 +1,8 @@
+import { Suspense } from "react";
 import ClaimDeploymentButton from "./claim-deployment-button";
 import PreviewUrlIcon from "./preview-url-icon";
+import WebsitePreview from "./website-preview";
+import WebsitePreviewSkeleton from "./website-preview-skeleton";
 
 export default async function ClaimPage({
   searchParams,
@@ -26,7 +29,7 @@ export default async function ClaimPage({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col flex-grow space-y-6 min-h-[412px]">
       <div className="space-y-2">
         <h2 className="text-2xl font-semibold text-neutral-800">
           Your Deployment is Ready
@@ -36,6 +39,9 @@ export default async function ClaimPage({
         </p>
       </div>
       <PreviewUrlIcon previewUrl={previewUrl} />
+      <Suspense fallback={<WebsitePreviewSkeleton />}>
+        <WebsitePreview url={previewUrl} />
+      </Suspense>
       <p className="text-sm text-neutral-700">
         By claiming this deployment, you&apos;ll be able to manage it from your
         own account and make future updates.

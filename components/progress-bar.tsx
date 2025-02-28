@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 
 export function ProgressBar({
   totalTimeInSeconds = 60,
+  disabled = false,
 }: {
   totalTimeInSeconds: number;
+  disabled?: boolean;
 }) {
   const [progress, setProgress] = useState(0);
 
@@ -25,7 +27,7 @@ export function ProgressBar({
   return (
     <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mt-5">
       <motion.div
-        className="h-full bg-black"
+        className={`h-full bg-black ${disabled ? "opacity-20" : ""}`}
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
         transition={{
