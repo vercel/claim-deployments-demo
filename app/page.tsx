@@ -245,7 +245,8 @@ export default function Home() {
                   height={24}
                 />
                 <p className="text-sm text-gray-500">
-                  Drag & drop a .tgz file here, or click to select
+                  Drag & drop a .tgz file of a Next.js project here, or click to
+                  select
                 </p>
                 {file && (
                   <p className="mt-2 text-sm font-medium text-gray-800">
