@@ -18,6 +18,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("template");
   const router = useRouter();
   const [deployment, setDeployment] = useState(null);
+  const [deploymentFinished, setDeploymentFinished] = useState(false);
 
   const onDrop = (acceptedFiles: File[]) => {
     setFile(acceptedFiles[0]);
@@ -37,6 +38,7 @@ export default function Home() {
     if (!file && !selectedTemplate) return;
 
     setDeploying(true);
+    setDeploymentFinished(false);
     setError("");
 
     const formData = new FormData();
@@ -108,6 +110,8 @@ export default function Home() {
           }),
         });
 
+        setDeploymentFinished(true);
+
         const dataProjectTransfer = await res.json();
         router.push(
           `/claim?code=${dataProjectTransfer.code}&previewUrl=https://${data.deployment.alias[0]}`
@@ -159,6 +163,9 @@ export default function Home() {
       averageDeployTimeInSeconds: 25,
     },
   ];
+
+  const deployButtonDisabled =
+    deploying || deploymentFinished || (!file && !selectedTemplate);
 
   return (
     <>
@@ -238,7 +245,8 @@ export default function Home() {
                   height={24}
                 />
                 <p className="text-sm text-gray-500">
-                  Drag & drop a .tgz file here, or click to select
+                  Drag & drop a .tgz file of a Next.js project here, or click to
+                  select
                 </p>
                 {file && (
                   <p className="mt-2 text-sm font-medium text-gray-800">
@@ -265,17 +273,18 @@ export default function Home() {
           <div className="mt-6">
             <button
               type="submit"
-              disabled={deploying || (!file && !selectedTemplate)}
+              disabled={deployButtonDisabled}
               className={`w-full py-2 px-4 rounded-md font-medium text-sm ${
-                deploying || (!file && !selectedTemplate)
+                deployButtonDisabled
                   ? "bg-neutral-100 text-gray-400  cursor-not-allowed border"
                   : "bg-black hover:opacity-80 text-white"
               }`}
               onClick={handleDeploy}
             >
-              {deploying ? (
+              {deploymentFinished ? (
+                "Deployment successful"
+              ) : deploying && !deploymentFinished ? (
                 <>
-                  {" "}
                   <LoadingSpinner text="Deploying..." />
                 </>
               ) : (
@@ -284,9 +293,10 @@ export default function Home() {
             </button>
           </div>
 
-          {deploying && (
+          {(deploying || deploymentFinished) && (
             <>
               <ProgressBar
+                disabled={deploymentFinished}
                 totalTimeInSeconds={
                   templates.find((template) => template.id === selectedTemplate)
                     ?.averageDeployTimeInSeconds || 60
