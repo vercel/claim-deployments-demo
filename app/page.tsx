@@ -139,7 +139,7 @@ export default function Home() {
           alt="Next.js logo"
         />
       ),
-      averageDeployTimeInSeconds: 56,
+      averageDeployTimeInSeconds: 42,
     },
     {
       id: "vue",
@@ -160,7 +160,7 @@ export default function Home() {
           alt="Svelte logo"
         />
       ),
-      averageDeployTimeInSeconds: 25,
+      averageDeployTimeInSeconds: 23,
     },
   ];
 
