@@ -139,7 +139,7 @@ export default function Home() {
           alt="Next.js logo"
         />
       ),
-      averageDeployTimeInSeconds: 56,
+      averageDeployTimeInSeconds: 44,
     },
     {
       id: "vue",
