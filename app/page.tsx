@@ -142,12 +142,12 @@ export default function Home() {
       averageDeployTimeInSeconds: 42,
     },
     {
-      id: "vue",
-      name: "Vue.js",
+      id: "nuxtjs",
+      name: "Nuxt",
       icon: (
-        <Image src="images/vue.svg" width={32} height={32} alt="Vue.js logo" />
+        <Image src="images/nuxt.svg" width={32} height={32} alt="Nuxt logo" />
       ),
-      averageDeployTimeInSeconds: 20,
+      averageDeployTimeInSeconds: 30,
     },
     {
       id: "svelte",
@@ -160,7 +160,7 @@ export default function Home() {
           alt="Svelte logo"
         />
       ),
-      averageDeployTimeInSeconds: 23,
+      averageDeployTimeInSeconds: 17,
     },
   ];
 
@@ -168,7 +168,7 @@ export default function Home() {
     deploying || deploymentFinished || (!file && !selectedTemplate);
 
   return (
-    <>
+    <div className="min-h-[330px]">
       <h2 className="text-2xl font-semibold text-neutral-800">
         Deploy to Vercel
       </h2>
@@ -307,6 +307,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
