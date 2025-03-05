@@ -13,7 +13,7 @@ export async function PATCH(
       {
         method: "PATCH",
         headers: {
-          Authorization: `Bearer ${process.env.VERCEL_TOKEN}`,
+          Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
           "Content-Type": "application/json",
         },
       }

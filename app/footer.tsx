@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="hidden sm:block h-6 w-px bg-gray-300" />
         <Link
           className="flex items-center hover:text-gray-600 transition-colors sm:w-auto w-full justify-center sm:justify-start pt-4 sm:pt-0"
-          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fclaim-deployments-demo"
+          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fclaim-deployments-demo&env=ACCESS_TOKEN,TEAM_ID"
           target="_blank"
           rel="noopener noreferrer"
           title="Deploy to Vercel"

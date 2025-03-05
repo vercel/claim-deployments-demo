@@ -11,12 +11,12 @@ Try it out at: [https://claim-deployments-demo.vercel.app](https://claim-deploym
 To set up the project, add the following environment variables to your `.env.local` file:
 
 ```bash
-VERCEL_TEAM_ID=""
-VERCEL_TOKEN=""
+TEAM_ID=""
+ACCESS_TOKEN=""
 ```
 
-- `VERCEL_TEAM_ID`: The ID of the team where projects will be tranferred from. You can find this in the Vercel Dashboard under **Team Settings**.
-- `VERCEL_TOKEN`: An access token used to interact with Vercel's REST API. You can generate one from the [Tokens](https://vercel.com/account/settings/tokens) page in the Vercel Dashboard. Ensure that the token's scope matches the team where the projects will be transferred from.
+- `TEAM_ID`: The ID of the team where projects will be tranferred from. You can find this in the Vercel Dashboard under **Team Settings**.
+- `ACCESS_TOKEN`: An access token used to interact with Vercel's REST API. You can generate one from the [Tokens](https://vercel.com/account/settings/tokens) page in the Vercel Dashboard. Ensure that the token's scope matches the team where the projects will be transferred from.
 
 ## Running the Development Server
 

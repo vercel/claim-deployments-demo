@@ -6,7 +6,7 @@ async function checkDeploymentStatus(url: string) {
     `${VERCEL_API_URL}/v13/deployments/get/?url=${url}`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.VERCEL_TOKEN}`,
+        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
         "Cache-Control": "no-cache",
       },
       cache: "no-cache",
