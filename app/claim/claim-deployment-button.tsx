@@ -28,6 +28,7 @@ export default function ClaimDeploymentButton({ code }: { code: string }) {
           width={17}
           height={17}
           className="mr-2"
+          loading="eager"
         />
         Claim Deployment
       </button>
