@@ -5,12 +5,12 @@ export async function POST(req: Request) {
   const { projectId } = await req.json();
 
   const res = await fetch(
-    `${VERCEL_API_URL}/v9/projects/${projectId}/transfer-request?teamId=${process.env.VERCEL_TEAM_ID}`,
+    `${VERCEL_API_URL}/v9/projects/${projectId}/transfer-request?teamId=${process.env.TEAM_ID}`,
     {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${process.env.VERCEL_TOKEN}`,
+        authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
       },
       body: JSON.stringify({}),
     }

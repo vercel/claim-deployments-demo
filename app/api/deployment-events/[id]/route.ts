@@ -11,7 +11,7 @@ export async function GET(
     }/events?${req.nextUrl.searchParams.toString()}`,
     {
       headers: {
-        authorization: `Bearer ${process.env.VERCEL_TOKEN}`,
+        authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
       },
     }
   );

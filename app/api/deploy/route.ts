@@ -4,15 +4,15 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { VERCEL_API_URL } from "@/app/utils/constants";
 
-const token = process.env.VERCEL_TOKEN;
-const teamId = process.env.VERCEL_TEAM_ID;
+const token = process.env.ACCESS_TOKEN;
+const teamId = process.env.TEAM_ID;
 
 if (!token) {
-  throw new Error("VERCEL_TOKEN is required");
+  throw new Error("ACCESS_TOKEN is required");
 }
 
 if (!teamId) {
-  throw new Error("VERCEL_TEAM_ID is required");
+  throw new Error("TEAM_ID is required");
 }
 
 export async function POST(req: NextRequest) {

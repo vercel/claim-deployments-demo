@@ -18,7 +18,7 @@ export function BuildLogs({ deployment }: { deployment: Deployment | null }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.2 }}
-          className="mt-3 text-gray-600 p-3 rounded-md border border-gray-200 font-mono text-sm"
+          className="mt-3 text-gray-600 p-3 rounded-md border border-gray-200 font-mono text-sm break-words"
         >
           {latestLog.text}
         </motion.div>
