@@ -207,7 +207,7 @@ export default function Home() {
                 {templates.map((template) => (
                   <div
                     key={template.id}
-                    className={`cursor-pointer transition-all p-6 rounded-lg border ${
+                    className={`cursor-pointer transition-all sm:p-6 p-2 pt-3 rounded-lg border  ${
                       selectedTemplate === template.id
                         ? "bg-neutral-100 border"
                         : "hover:border-neutral-300"

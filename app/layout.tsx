@@ -19,7 +19,7 @@ export default function RootLayout({
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} antialiased h-full`}
     >
-      <body className="flex min-h-full flex-col flex-col justify-between items-center sm:bg-neutral-50 pt-5 sm:px-6">
+      <body className="flex min-h-full flex-col flex-col justify-between items-center sm:bg-neutral-50 sm:px-6">
         <div className="flex-1 sm:flex-none bg-white rounded-xl sm:shadow-md overflow-hidden sm:border sm:border-neutral-200 p-6 sm:my-auto w-full max-w-2xl">
           {children}
         </div>
