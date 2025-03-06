@@ -17,7 +17,7 @@ export default function Footer() {
             src="/icons/github.svg"
             width={20}
             height={20}
-            className="flex-shrink-0"
+            className="shrink-0"
           />
           <span className="ml-2">GitHub Repository</span>
         </Link>
@@ -34,7 +34,7 @@ export default function Footer() {
             src="/icons/document.svg"
             width={20}
             height={20}
-            className="flex-shrink-0"
+            className="shrink-0"
           />
           <span className="ml-2">Documentation</span>
         </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
             src="/icons/vercel-dark.svg"
             width={20}
             height={20}
-            className="flex-shrink-0"
+            className="shrink-0"
           />
           <span className="ml-2">Deploy to Vercel</span>
         </Link>

@@ -20,7 +20,7 @@ export default function ClaimDeploymentButton({ code }: { code: string }) {
       {" "}
       <button
         type="button"
-        className="w-full h-10 flex items-center justify-center p-2 rounded-lg transition-colors duration-200 border bg-black text-white text-sm hover:opacity-80 focus:outline-none focus:ring-0"
+        className="w-full h-10 flex items-center justify-center p-2 rounded-lg transition-colors duration-200 border bg-black text-white text-sm hover:opacity-80 focus:outline-hidden focus:ring-0"
       >
         <Image
           alt="Vercel Logo"

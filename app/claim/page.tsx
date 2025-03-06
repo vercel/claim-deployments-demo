@@ -29,7 +29,7 @@ export default async function ClaimPage({
   }
 
   return (
-    <div className="flex flex-col flex-grow space-y-6">
+    <div className="flex flex-col grow space-y-6">
       <div className="space-y-2">
         <h2 className="text-2xl font-semibold text-neutral-800">
           Your Deployment is Ready
