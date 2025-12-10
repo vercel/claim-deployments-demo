@@ -100,7 +100,7 @@ export default function Home() {
           clearTimeout(timeoutId);
         }
 
-        const res = await fetch("/api/start-project-transfer", {
+        const projectTransfer = await fetch("/api/start-project-transfer", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -110,11 +110,26 @@ export default function Home() {
           }),
         });
 
-        setDeploymentFinished(true);
+        if (!projectTransfer.ok) {
+          setError("Failed to start project transfer.");
+          return;
+        }
 
-        const dataProjectTransfer = await res.json();
+        const productionDeployment = await fetch(
+          `/api/production-deployment/${data.deployment.projectId}`
+        );
+
+        if (!productionDeployment.ok) {
+          setError("Failed to get production deployment.");
+          return;
+        }
+
+        const dataProductionDeployment = await productionDeployment.json();
+        const dataProjectTransfer = await projectTransfer.json();
+
+        setDeploymentFinished(true);
         router.push(
-          `/claim?code=${dataProjectTransfer.code}&previewUrl=https://${data.deployment.alias[0]}`
+          `/claim?code=${dataProjectTransfer.code}&previewUrl=https://${dataProductionDeployment.domain.name}`
         );
       } else {
         setError(data.error || "Deployment failed");
